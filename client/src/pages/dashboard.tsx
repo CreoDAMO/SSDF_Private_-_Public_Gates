@@ -10,6 +10,8 @@ import ScenarioSimulator from '@/components/ScenarioSimulator';
 import OwnershipAnalysis from '@/components/OwnershipAnalysis';
 import AuthenticOwnershipAnalysis from '@/components/AuthenticOwnershipAnalysis';
 import RealTimeAPIIntegration from '@/components/RealTimeAPIIntegration';
+import ArbitrageOpportunityTracker from '@/components/ArbitrageOpportunityTracker';
+import DebtScarcitySystemAnalysis from '@/components/DebtScarcitySystemAnalysis';
 import APIConfigPanel from '@/components/APIConfigPanel';
 import ScarcityAnalysisEngine from '@/components/ScarcityAnalysisEngine';
 import DebtSystemArchitecture from '@/components/DebtSystemArchitecture';
@@ -164,6 +166,9 @@ export default function Dashboard() {
             </div>
           </div>
 
+          {/* Comprehensive Debt-Scarcity System Analysis */}
+          <DebtScarcitySystemAnalysis />
+
           {/* Advanced Scarcity Analysis */}
           <ScarcityAnalysisEngine />
           
@@ -184,6 +189,9 @@ export default function Dashboard() {
 
           {/* Real-Time API Integration */}
           <RealTimeAPIIntegration />
+
+          {/* Arbitrage Opportunity Tracker */}
+          <ArbitrageOpportunityTracker />
 
           {/* API Configuration Panel */}
           <APIConfigPanel />

@@ -115,6 +115,11 @@ Changelog:
   - Beyond corporate veils analysis: Central banks, investment funds, ultimate beneficiaries
   - RealTimeAPIIntegration: 8 real APIs including U.S. Treasury, Spinwheel, Plaid, PDCflow
   - Comprehensive API categorization: public/private, tracking/analysis/payment functions
+- June 28, 2025. Integrated arbitrage opportunity research and systemic debt critique
+  - ArbitrageOpportunityTracker: Research-based opportunities in sovereign/corporate debt markets
+  - DebtScarcitySystemAnalysis: Comprehensive analysis of debt as scarcity-generation mechanism
+  - Eurozone inflation swap arbitrage, capital structure arbitrage, convertible bond strategies
+  - Systematic exposure of elite-only access to $2-5T arbitrage markets while 1.1B face artificial scarcity
 ```
 
 ## User Preferences
