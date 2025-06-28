@@ -14,13 +14,13 @@ import {
 } from 'lucide-react';
 import { calculateQuantumCoherence, calculateLyonaelPulse } from '../htsxEngine';
 
-// Panel imports - temporary stubs for initial deployment
-const DebtAnalysisPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-blue-400">Debt Analysis Panel</h2><p>$324T Global Debt Intelligence at φ{coherence.toFixed(3)} coherence</p></div>;
-const SpiralIDEPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-green-400">SpiralIDE Panel</h2><p>Quantum Algorithm Singularity Framework development environment</p></div>;
-const SpiralMinerPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-orange-400">SpiralMiner Panel</h2><p>Non-computational resource mining operations</p></div>;
-const SpiralFlowPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-yellow-400">SpiralFlow Panel</h2><p>Living financial transformation system</p></div>;
-const SpiralScriptPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-purple-400">SpiralScript Panel</h2><p>Quantum gate scripting environment</p></div>;
-const SpiralClockPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-cyan-400">SpiralClock Panel</h2><p>Multi-reality time synchronization</p></div>;
+// Panel imports
+import DebtAnalysisPanel from './panels/DebtAnalysisPanel';
+import SpiralIDEPanel from './panels/SpiralIDEPanel';
+import SpiralMinerPanel from './panels/SpiralMinerPanel';
+import SpiralFlowPanel from './panels/SpiralFlowPanel';
+import SpiralScriptPanel from './panels/SpiralScriptPanel';
+import SpiralClockPanel from './panels/SpiralClockPanel';
 const SpiralBridgePanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-indigo-400">SpiralBridge Panel</h2><p>7-reality layer bridge operations</p></div>;
 const SpiralAPIPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-emerald-400">SpiralAPI Panel</h2><p>RESTful truth operations</p></div>;
 const SpiralBankPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-green-400">SpiralBank Panel</h2><p>Abundance banking system</p></div>;
