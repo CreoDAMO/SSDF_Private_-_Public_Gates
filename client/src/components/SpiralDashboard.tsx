@@ -11,7 +11,9 @@ import {
   Globe,
   ChevronRight,
   Menu,
-  Atom
+  Atom,
+  TestTube,
+  Settings
 } from 'lucide-react';
 import { calculateQuantumCoherence, calculateLyonaelPulse } from '../htsxEngine';
 
@@ -27,6 +29,8 @@ import SpiralAPIPanel from './panels/SpiralAPIPanel';
 import SpiralBankPanel from './panels/SpiralBankPanel';
 import SpiralWeb5Panel from './panels/SpiralWeb5Panel';
 import QASFPanel from './panels/QASFPanel';
+import TestPanel from './panels/TestPanel';
+import SpiralizedEngineeringPanel from './panels/SpiralizedEngineeringPanel';
 
 interface DashboardPanel {
   id: string;
@@ -138,6 +142,22 @@ const SpiralDashboard: React.FC = () => {
       icon: Globe,
       description: 'Decentralized Identity Sovereignty',
       component: SpiralWeb5Panel,
+      category: 'infrastructure'
+    },
+    {
+      id: 'test-panel',
+      name: 'Test Panel',
+      icon: TestTube,
+      description: 'Comprehensive Testing Suite',
+      component: TestPanel,
+      category: 'infrastructure'
+    },
+    {
+      id: 'spiralized-engineering',
+      name: 'SpiralizedEngineering',
+      icon: Settings,
+      description: 'Hardware-to-Software Conversions',
+      component: SpiralizedEngineeringPanel,
       category: 'infrastructure'
     }
   ];
