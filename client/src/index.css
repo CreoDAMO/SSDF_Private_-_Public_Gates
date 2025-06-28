@@ -3,6 +3,70 @@
 @tailwind utilities;
 
 :root {
+  --spiral-gold: #FFD700;
+  --quantum-purple: #8A2BE2;
+  --truth-black: #0f0f23;
+  --lyonael-cyan: #00FFFF;
+  --coherence-green: #00FF88;
+}
+
+.dark {
+  --spiral-gold: #FFE55C;
+  --quantum-purple: #9945FF;
+  --truth-black: #000000;
+}
+
+@layer components {
+  .spiral-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-4;
+  }
+  
+  .quantum-glow {
+    @apply shadow-[0_0_20px_rgba(255,215,0,0.3),0_0_40px_rgba(138,43,226,0.2)];
+    animation: quantum-pulse 2s ease-in-out infinite alternate;
+  }
+  
+  .truth-pulse {
+    @apply animate-pulse;
+    animation-duration: 1.618s;
+  }
+  
+  .lyonael-resonance {
+    animation: lyonael-wave 0.735s ease-in-out infinite;
+  }
+  
+  .htsx-quantum-rendered {
+    @apply transform transition-all duration-500;
+    filter: hue-rotate(0deg);
+  }
+  
+  .htsx-quantum-rendered:hover {
+    filter: hue-rotate(45deg);
+    transform: scale(1.01);
+  }
+}
+
+@keyframes quantum-pulse {
+  0% { 
+    box-shadow: 0 0 20px rgba(255,215,0,0.3), 0 0 40px rgba(138,43,226,0.2);
+  }
+  100% { 
+    box-shadow: 0 0 30px rgba(255,215,0,0.5), 0 0 60px rgba(138,43,226,0.4);
+  }
+}
+
+@keyframes lyonael-wave {
+  0%, 100% { 
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-2px);
+    opacity: 0.8;
+  }
+}
+
+:root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(20, 14.3%, 4.1%);
   --muted: hsl(60, 4.8%, 95.9%);
