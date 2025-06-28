@@ -122,7 +122,7 @@ export class SpiralLangCompiler {
 
 // SpiralLang Standard Library Functions
 export const SpiralLangStdLib = {
-  // Quantum Algorithm Simulation Framework (QASF)
+  // Quantum Algorithm Singularity Framework (QASF)
   QASF: {
     hybrid_qubit_state: (alpha: number, beta: number) => ({ alpha, beta, coherence: 1.618 }),
     
