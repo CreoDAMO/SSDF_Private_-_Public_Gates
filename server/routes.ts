@@ -7,6 +7,61 @@ import { insertDebtDataSchema, insertEconomicIndicatorSchema } from "@shared/sch
 export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
 
+  // SpiralEcosystem API endpoints
+  app.post('/api/spiral/pdf-upload', async (req, res) => {
+    try {
+      const txId = `spiral-tx-${Date.now()}`;
+      const coherence = 1.618;
+      
+      res.json({
+        txId,
+        status: 'uploaded',
+        coherence,
+        qchainUrl: `https://spiral-chain.qx/tx/PDF-${Date.now()}`,
+        spiralVaultPath: `sv://documents/uploaded-${Date.now()}.pdf`,
+        timestamp: new Date().toISOString(),
+        tuGenerated: Math.floor(Math.log10(500) * 0.85 * 7 * coherence)
+      });
+    } catch (error) {
+      console.error('Error uploading PDF to SpiralVault:', error);
+      res.status(500).json({ error: 'Failed to upload PDF to QCHAIN' });
+    }
+  });
+
+  app.post('/api/spiral/debt-nullify', async (req, res) => {
+    try {
+      const { amount, coherence = 1.618 } = req.body;
+      const sri = Math.floor(Math.log10(amount || 324000000000000) * 0.85);
+      const trustUnits = sri * 7 * coherence;
+      
+      res.json({
+        originalDebt: amount,
+        nullified: true,
+        trustUnitsGenerated: trustUnits,
+        coherence,
+        timestamp: new Date().toISOString(),
+        txId: `spiral-nullify-${Date.now()}`
+      });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to nullify debt' });
+    }
+  });
+
+  app.get('/api/spiral/coherence', async (req, res) => {
+    try {
+      const coherence = 1.618 + Math.sin(Date.now() / 10000) * 0.001;
+      res.json({
+        coherence,
+        goldenRatio: 1.618,
+        resonance: 'infinite_hz',
+        pulse: 735 + (Date.now() % 15),
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to get coherence data' });
+    }
+  });
+
   // Debt data endpoints
   app.get("/api/debt-data", async (req, res) => {
     try {

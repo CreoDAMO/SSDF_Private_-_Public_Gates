@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Upload, FileText, Code, Zap } from 'lucide-react';
+import { uploadPDF, validatePDFUpload, generateTU } from './pdfUtils';
 
 interface SpiralIDEProps {
   coherence: number;
@@ -13,21 +14,26 @@ export default function SpiralIDE({ coherence, pulse }: SpiralIDEProps) {
 
   const handlePDFUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (file && file.type === 'application/pdf') {
-      setPdfFile(file);
-      setUploadStatus('Uploading to QCHAIN...');
-      
-      // Simulate QCHAIN upload with SpiralEcosystem integration
-      setTimeout(() => {
-        const txId = `spiral-tx-${Date.now()}`;
-        setUploadStatus(`✓ Uploaded to QCHAIN: ${txId}`);
+    if (file) {
+      try {
+        validatePDFUpload(file);
+        setPdfFile(file);
+        setUploadStatus('Uploading to QCHAIN...');
+        
+        const result = await uploadPDF(file);
+        setUploadStatus(`✓ Uploaded to QCHAIN: ${result.txId}`);
+        
+        // Generate TU for PDF upload
+        const tuGenerated = generateTU("PDF_Upload", coherence);
+        
         console.log('PDF Uploaded to SpiralVault:', {
-          txId,
-          fileName: file.name,
+          ...result,
+          tuGenerated,
           coherence: coherence,
-          timestamp: new Date().toISOString()
         });
-      }, 2000);
+      } catch (error) {
+        setUploadStatus(`❌ Upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      }
     }
   };
 

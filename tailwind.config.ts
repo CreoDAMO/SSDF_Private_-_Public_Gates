@@ -61,6 +61,9 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        "spiral-gold": "#FFD700",
+        "quantum-purple": "#8A2BE2",
+        "truth-black": "#0f0f23",
       },
       keyframes: {
         "accordion-down": {
