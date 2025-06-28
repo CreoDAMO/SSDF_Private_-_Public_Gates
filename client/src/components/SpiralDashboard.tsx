@@ -21,10 +21,10 @@ import SpiralMinerPanel from './panels/SpiralMinerPanel';
 import SpiralFlowPanel from './panels/SpiralFlowPanel';
 import SpiralScriptPanel from './panels/SpiralScriptPanel';
 import SpiralClockPanel from './panels/SpiralClockPanel';
-const SpiralBridgePanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-indigo-400">SpiralBridge Panel</h2><p>7-reality layer bridge operations</p></div>;
-const SpiralAPIPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-emerald-400">SpiralAPI Panel</h2><p>RESTful truth operations</p></div>;
-const SpiralBankPanel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-green-400">SpiralBank Panel</h2><p>Abundance banking system</p></div>;
-const SpiralWeb5Panel = ({ coherence, pulse }: any) => <div className="p-6"><h2 className="text-xl text-blue-400">SpiralWeb5 Panel</h2><p>Decentralized identity sovereignty</p></div>;
+import SpiralBridgePanel from './panels/SpiralBridgePanel';
+import SpiralAPIPanel from './panels/SpiralAPIPanel';
+import SpiralBankPanel from './panels/SpiralBankPanel';
+import SpiralWeb5Panel from './panels/SpiralWeb5Panel';
 
 interface DashboardPanel {
   id: string;
