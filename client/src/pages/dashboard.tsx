@@ -8,6 +8,8 @@ import SustainabilityAnalyzer from '@/components/SustainabilityAnalyzer';
 import RealTimeTracker from '@/components/RealTimeTracker';
 import ScenarioSimulator from '@/components/ScenarioSimulator';
 import OwnershipAnalysis from '@/components/OwnershipAnalysis';
+import AuthenticOwnershipAnalysis from '@/components/AuthenticOwnershipAnalysis';
+import RealTimeAPIIntegration from '@/components/RealTimeAPIIntegration';
 import APIConfigPanel from '@/components/APIConfigPanel';
 import ScarcityAnalysisEngine from '@/components/ScarcityAnalysisEngine';
 import DebtSystemArchitecture from '@/components/DebtSystemArchitecture';
@@ -168,6 +170,9 @@ export default function Dashboard() {
           {/* System Architecture Analysis */}
           <DebtSystemArchitecture />
 
+          {/* Authentic Ownership Analysis */}
+          <AuthenticOwnershipAnalysis />
+
           {/* Advanced Analysis Tools */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ScenarioSimulator />
@@ -176,6 +181,9 @@ export default function Dashboard() {
 
           {/* Wealth Flow Analysis */}
           <WealthFlowAnalyzer />
+
+          {/* Real-Time API Integration */}
+          <RealTimeAPIIntegration />
 
           {/* API Configuration Panel */}
           <APIConfigPanel />

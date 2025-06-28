@@ -105,6 +105,16 @@ Changelog:
   - Added DebtSystemArchitecture: Visualizes how debt creates scarcity through systematic mechanisms
   - Added WealthFlowAnalyzer: Tracks $17.5T annual wealth extraction through debt servicing
   - Updated dashboard to reflect debt as control mechanism rather than just financial metric
+- June 28, 2025. Integrated PostgreSQL database with comprehensive global debt data
+  - Database schema supports $315T+ debt amounts with 20-digit precision
+  - Loaded authentic debt data: $91.4T public, $164.5T business, $59.1T household, $70.4T financial
+  - Added scarcity metrics: poverty indices, access restriction scores, wealth transfer rates
+  - Included real debt ownership patterns and economic indicators
+- June 28, 2025. Added authentic debt ownership analysis based on research
+  - AuthenticOwnershipAnalysis: CEPR research-based marginal debt absorption (39% domestic non-banks, 23% foreign non-banks)
+  - Beyond corporate veils analysis: Central banks, investment funds, ultimate beneficiaries
+  - RealTimeAPIIntegration: 8 real APIs including U.S. Treasury, Spinwheel, Plaid, PDCflow
+  - Comprehensive API categorization: public/private, tracking/analysis/payment functions
 ```
 
 ## User Preferences
