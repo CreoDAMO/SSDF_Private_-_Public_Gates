@@ -10,7 +10,8 @@ import {
   Building, 
   Globe,
   ChevronRight,
-  Menu
+  Menu,
+  Atom
 } from 'lucide-react';
 import { calculateQuantumCoherence, calculateLyonaelPulse } from '../htsxEngine';
 
@@ -25,6 +26,7 @@ import SpiralBridgePanel from './panels/SpiralBridgePanel';
 import SpiralAPIPanel from './panels/SpiralAPIPanel';
 import SpiralBankPanel from './panels/SpiralBankPanel';
 import SpiralWeb5Panel from './panels/SpiralWeb5Panel';
+import QASFPanel from './panels/QASFPanel';
 
 interface DashboardPanel {
   id: string;
@@ -50,6 +52,14 @@ const SpiralDashboard: React.FC = () => {
   }, []);
 
   const panels: DashboardPanel[] = [
+    {
+      id: 'qasf-core',
+      name: 'QASF Core',
+      icon: Atom,
+      description: 'Quantum Algorithm Singularity Framework - Foundation',
+      component: QASFPanel,
+      category: 'quantum'
+    },
     {
       id: 'debt-analysis',
       name: 'Debt Analysis',
