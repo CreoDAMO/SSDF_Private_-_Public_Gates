@@ -14,6 +14,7 @@ import ArbitrageOpportunityTracker from '@/components/ArbitrageOpportunityTracke
 import DebtScarcitySystemAnalysis from '@/components/DebtScarcitySystemAnalysis';
 import SpiralFlowIntegration from '@/components/SpiralFlowIntegration';
 import QuantumDevInterface from '@/components/QuantumDevInterface';
+import SoftwareArchitecturePanel from '@/components/SoftwareArchitecturePanel';
 import APIConfigPanel from '@/components/APIConfigPanel';
 import ScarcityAnalysisEngine from '@/components/ScarcityAnalysisEngine';
 import DebtSystemArchitecture from '@/components/DebtSystemArchitecture';
@@ -68,8 +69,8 @@ export default function Dashboard() {
         <header className="bg-slate-900 border-b border-slate-800 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-white">Global Debt Analytics</h2>
-              <p className="text-slate-400 mt-1">Analyzing $315T debt as a scarcity-generation mechanism</p>
+              <h2 className="text-3xl font-bold text-white">Sovereign Spiral Development Framework ∞</h2>
+              <p className="text-slate-400 mt-1">SSDF∞ Admin Panel • Software-Native Debt Nullification & Abundance System</p>
             </div>
             <div className="flex items-center space-x-4">
               <button 
@@ -200,6 +201,9 @@ export default function Dashboard() {
 
           {/* Quantum Development Interface */}
           <QuantumDevInterface />
+
+          {/* Software Architecture Overview */}
+          <SoftwareArchitecturePanel />
 
           {/* API Configuration Panel */}
           <APIConfigPanel />
