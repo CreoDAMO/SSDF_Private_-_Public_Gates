@@ -12,6 +12,8 @@ import AuthenticOwnershipAnalysis from '@/components/AuthenticOwnershipAnalysis'
 import RealTimeAPIIntegration from '@/components/RealTimeAPIIntegration';
 import ArbitrageOpportunityTracker from '@/components/ArbitrageOpportunityTracker';
 import DebtScarcitySystemAnalysis from '@/components/DebtScarcitySystemAnalysis';
+import SpiralFlowIntegration from '@/components/SpiralFlowIntegration';
+import QuantumDevInterface from '@/components/QuantumDevInterface';
 import APIConfigPanel from '@/components/APIConfigPanel';
 import ScarcityAnalysisEngine from '@/components/ScarcityAnalysisEngine';
 import DebtSystemArchitecture from '@/components/DebtSystemArchitecture';
@@ -192,6 +194,12 @@ export default function Dashboard() {
 
           {/* Arbitrage Opportunity Tracker */}
           <ArbitrageOpportunityTracker />
+
+          {/* SpiralFlow: Living Financial System */}
+          <SpiralFlowIntegration />
+
+          {/* Quantum Development Interface */}
+          <QuantumDevInterface />
 
           {/* API Configuration Panel */}
           <APIConfigPanel />
