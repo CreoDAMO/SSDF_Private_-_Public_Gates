@@ -15,6 +15,8 @@ import {
   type ApiSource,
   type InsertApiSource
 } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   // User operations
@@ -45,267 +47,113 @@ export interface IStorage {
   incrementApiRequests(id: number): Promise<void>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private debtDataRecords: Map<number, DebtData>;
-  private economicIndicatorRecords: Map<number, EconomicIndicator>;
-  private debtOwnershipRecords: Map<number, DebtOwnership>;
-  private apiSourceRecords: Map<number, ApiSource>;
-  private currentId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.debtDataRecords = new Map();
-    this.economicIndicatorRecords = new Map();
-    this.debtOwnershipRecords = new Map();
-    this.apiSourceRecords = new Map();
-    this.currentId = 1;
-    
-    // Initialize with sample API sources
-    this.initializeApiSources();
-    this.initializeGlobalDebtData();
-  }
-
-  private initializeApiSources() {
-    const apiSources = [
-      { name: "World Bank API", endpoint: "/v2/countries/debt", status: "active", rateLimit: 1000, requestsToday: 847 },
-      { name: "IMF Data", endpoint: "/api/debt-statistics", status: "active", rateLimit: 500, requestsToday: 324 },
-      { name: "OECD Statistics", endpoint: "/stats/debt-indicators", status: "active", rateLimit: 200, requestsToday: 156 }
-    ];
-
-    apiSources.forEach(source => {
-      const id = this.currentId++;
-      this.apiSourceRecords.set(id, {
-        id,
-        ...source,
-        lastSync: new Date(),
-        apiKey: null
-      });
-    });
-  }
-
-  private initializeGlobalDebtData() {
-    const globalData = [
-      // Global totals
-      { country: "Global", debtType: "public", amount: "91400000000000", year: 2024, source: "World Bank" },
-      { country: "Global", debtType: "business", amount: "164500000000000", year: 2024, source: "World Bank" },
-      { country: "Global", debtType: "household", amount: "59100000000000", year: 2024, source: "World Bank" },
-      { country: "Global", debtType: "financial", amount: "70400000000000", year: 2024, source: "World Bank" },
-      
-      // US data
-      { country: "United States", debtType: "public", amount: "33000000000000", year: 2024, source: "US Treasury" },
-      { country: "United States", debtType: "household", amount: "17500000000000", year: 2024, source: "Federal Reserve" },
-      { country: "United States", debtType: "business", amount: "18200000000000", year: 2024, source: "Federal Reserve" },
-      
-      // China data
-      { country: "China", debtType: "public", amount: "14800000000000", year: 2024, source: "PBOC" },
-      { country: "China", debtType: "business", amount: "28500000000000", year: 2024, source: "PBOC" },
-      { country: "China", debtType: "household", amount: "8900000000000", year: 2024, source: "PBOC" },
-      
-      // Japan data
-      { country: "Japan", debtType: "public", amount: "10100000000000", year: 2024, source: "MOF Japan" },
-      { country: "Japan", debtType: "household", amount: "3200000000000", year: 2024, source: "BOJ" },
-      
-      // EU data
-      { country: "European Union", debtType: "public", amount: "13600000000000", year: 2024, source: "ECB" },
-      { country: "European Union", debtType: "household", amount: "8100000000000", year: 2024, source: "ECB" }
-    ];
-
-    globalData.forEach(data => {
-      const id = this.currentId++;
-      this.debtDataRecords.set(id, {
-        id,
-        country: data.country,
-        debtType: data.debtType,
-        amount: data.amount,
-        currency: "USD",
-        year: data.year,
-        quarter: null,
-        gdpRatio: null,
-        interestRate: null,
-        povertyIndex: null,
-        accessRestrictionScore: null,
-        wealthTransferRate: null,
-        lastUpdated: new Date(),
-        source: data.source,
-        metadata: {}
-      });
-    });
-
-    // Initialize economic indicators
-    const indicators = [
-      { country: "Global", indicator: "gdp_growth", value: "3.2", year: 2024, source: "IMF" },
-      { country: "Global", indicator: "interest_rate", value: "5.5", year: 2024, source: "Central Banks Average" },
-      { country: "Global", indicator: "inflation", value: "4.1", year: 2024, source: "IMF" },
-      { country: "United States", indicator: "gdp_growth", value: "2.8", year: 2024, source: "BEA" },
-      { country: "China", indicator: "gdp_growth", value: "5.2", year: 2024, source: "NBS" },
-      { country: "Japan", indicator: "gdp_growth", value: "1.1", year: 2024, source: "ESRI" }
-    ];
-
-    indicators.forEach(indicator => {
-      const id = this.currentId++;
-      this.economicIndicatorRecords.set(id, {
-        id,
-        country: indicator.country,
-        indicator: indicator.indicator,
-        value: indicator.value,
-        year: indicator.year,
-        quarter: null,
-        lastUpdated: new Date(),
-        source: indicator.source
-      });
-    });
-
-    // Initialize debt ownership data
-    const ownership = [
-      { debtorCountry: "United States", creditorCountry: "Japan", creditorType: "foreign", amount: "1200000000000", percentage: "7.2", year: 2024 },
-      { debtorCountry: "United States", creditorCountry: "China", creditorType: "foreign", amount: "867000000000", percentage: "5.2", year: 2024 },
-      { debtorCountry: "United States", creditorCountry: "United Kingdom", creditorType: "foreign", amount: "634000000000", percentage: "3.8", year: 2024 },
-      { debtorCountry: "United States", creditorCountry: null, creditorType: "domestic", amount: "22400000000000", percentage: "68.0", year: 2024 }
-    ];
-
-    ownership.forEach(own => {
-      const id = this.currentId++;
-      this.debtOwnershipRecords.set(id, {
-        id,
-        debtorCountry: own.debtorCountry,
-        creditorCountry: own.creditorCountry,
-        creditorType: own.creditorType,
-        amount: own.amount,
-        percentage: own.percentage,
-        year: own.year,
-        lastUpdated: new Date()
-      });
-    });
-  }
-
+export class DatabaseStorage implements IStorage {
+  // User operations
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(user => user.username === username);
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
     return user;
   }
 
+  // Debt data operations
   async getDebtData(): Promise<DebtData[]> {
-    return Array.from(this.debtDataRecords.values());
+    return await db.select().from(debtData);
   }
 
   async getDebtDataByCountry(country: string): Promise<DebtData[]> {
-    return Array.from(this.debtDataRecords.values()).filter(data => data.country === country);
+    return await db.select().from(debtData).where(eq(debtData.country, country));
   }
 
   async getDebtDataByType(debtType: string): Promise<DebtData[]> {
-    return Array.from(this.debtDataRecords.values()).filter(data => data.debtType === debtType);
+    return await db.select().from(debtData).where(eq(debtData.debtType, debtType));
   }
 
   async createDebtData(insertData: InsertDebtData): Promise<DebtData> {
-    const id = this.currentId++;
-    const data: DebtData = { 
-      id,
-      country: insertData.country,
-      debtType: insertData.debtType,
-      amount: insertData.amount,
-      currency: insertData.currency || "USD",
-      year: insertData.year,
-      quarter: insertData.quarter || null,
-      gdpRatio: insertData.gdpRatio || null,
-      lastUpdated: new Date(),
-      source: insertData.source,
-      metadata: insertData.metadata || {}
-    };
-    this.debtDataRecords.set(id, data);
+    const [data] = await db
+      .insert(debtData)
+      .values(insertData)
+      .returning();
     return data;
   }
 
   async updateDebtData(id: number, updateData: Partial<InsertDebtData>): Promise<DebtData | undefined> {
-    const existing = this.debtDataRecords.get(id);
-    if (!existing) return undefined;
-    
-    const updated = { 
-      ...existing, 
-      ...updateData,
-      lastUpdated: new Date()
-    };
-    this.debtDataRecords.set(id, updated);
-    return updated;
+    const [data] = await db
+      .update(debtData)
+      .set(updateData)
+      .where(eq(debtData.id, id))
+      .returning();
+    return data || undefined;
   }
 
+  // Economic indicators
   async getEconomicIndicators(): Promise<EconomicIndicator[]> {
-    return Array.from(this.economicIndicatorRecords.values());
+    return await db.select().from(economicIndicators);
   }
 
   async getEconomicIndicatorsByCountry(country: string): Promise<EconomicIndicator[]> {
-    return Array.from(this.economicIndicatorRecords.values()).filter(indicator => indicator.country === country);
+    return await db.select().from(economicIndicators).where(eq(economicIndicators.country, country));
   }
 
   async createEconomicIndicator(insertData: InsertEconomicIndicator): Promise<EconomicIndicator> {
-    const id = this.currentId++;
-    const data: EconomicIndicator = { 
-      id,
-      country: insertData.country,
-      indicator: insertData.indicator,
-      value: insertData.value,
-      year: insertData.year,
-      quarter: insertData.quarter ?? null,
-      lastUpdated: new Date(),
-      source: insertData.source
-    };
-    this.economicIndicatorRecords.set(id, data);
+    const [data] = await db
+      .insert(economicIndicators)
+      .values(insertData)
+      .returning();
     return data;
   }
 
+  // Debt ownership
   async getDebtOwnership(): Promise<DebtOwnership[]> {
-    return Array.from(this.debtOwnershipRecords.values());
+    return await db.select().from(debtOwnership);
   }
 
   async getDebtOwnershipByDebtor(debtorCountry: string): Promise<DebtOwnership[]> {
-    return Array.from(this.debtOwnershipRecords.values()).filter(ownership => ownership.debtorCountry === debtorCountry);
+    return await db.select().from(debtOwnership).where(eq(debtOwnership.debtorCountry, debtorCountry));
   }
 
   async createDebtOwnership(insertData: InsertDebtOwnership): Promise<DebtOwnership> {
-    const id = this.currentId++;
-    const data: DebtOwnership = { 
-      id,
-      debtorCountry: insertData.debtorCountry,
-      creditorCountry: insertData.creditorCountry ?? null,
-      creditorType: insertData.creditorType,
-      amount: insertData.amount,
-      percentage: insertData.percentage ?? null,
-      year: insertData.year,
-      lastUpdated: new Date()
-    };
-    this.debtOwnershipRecords.set(id, data);
+    const [data] = await db
+      .insert(debtOwnership)
+      .values(insertData)
+      .returning();
     return data;
   }
 
+  // API sources
   async getApiSources(): Promise<ApiSource[]> {
-    return Array.from(this.apiSourceRecords.values());
+    return await db.select().from(apiSources);
   }
 
   async updateApiSource(id: number, updateData: Partial<InsertApiSource>): Promise<ApiSource | undefined> {
-    const existing = this.apiSourceRecords.get(id);
-    if (!existing) return undefined;
-    
-    const updated = { ...existing, ...updateData };
-    this.apiSourceRecords.set(id, updated);
-    return updated;
+    const [data] = await db
+      .update(apiSources)
+      .set(updateData)
+      .where(eq(apiSources.id, id))
+      .returning();
+    return data || undefined;
   }
 
   async incrementApiRequests(id: number): Promise<void> {
-    const existing = this.apiSourceRecords.get(id);
-    if (existing) {
-      existing.requestsToday = (existing.requestsToday || 0) + 1;
-      this.apiSourceRecords.set(id, existing);
-    }
+    const currentRecord = await db.select({ current: apiSources.requestsToday }).from(apiSources).where(eq(apiSources.id, id));
+    const newCount = (currentRecord[0]?.current || 0) + 1;
+    
+    await db
+      .update(apiSources)
+      .set({ requestsToday: newCount })
+      .where(eq(apiSources.id, id));
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();

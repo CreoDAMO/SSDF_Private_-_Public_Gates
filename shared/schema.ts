@@ -12,7 +12,7 @@ export const debtData = pgTable("debt_data", {
   id: serial("id").primaryKey(),
   country: text("country").notNull(),
   debtType: text("debt_type").notNull(), // 'public', 'business', 'household', 'financial'
-  amount: decimal("amount", { precision: 15, scale: 2 }).notNull(),
+  amount: decimal("amount", { precision: 20, scale: 2 }).notNull(),
   currency: text("currency").notNull().default("USD"),
   year: integer("year").notNull(),
   quarter: integer("quarter"),
@@ -42,7 +42,7 @@ export const debtOwnership = pgTable("debt_ownership", {
   debtorCountry: text("debtor_country").notNull(),
   creditorCountry: text("creditor_country"),
   creditorType: text("creditor_type").notNull(), // 'domestic', 'foreign', 'central_bank', 'commercial_bank', etc.
-  amount: decimal("amount", { precision: 15, scale: 2 }).notNull(),
+  amount: decimal("amount", { precision: 20, scale: 2 }).notNull(),
   percentage: decimal("percentage", { precision: 5, scale: 2 }),
   year: integer("year").notNull(),
   lastUpdated: timestamp("last_updated").notNull().defaultNow(),
