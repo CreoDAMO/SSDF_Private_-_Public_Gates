@@ -75,6 +75,18 @@
     @apply transform -translate-y-1;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   }
+
+  .spiral-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-4;
+  }
+  
+  .quantum-glow {
+    @apply shadow-[0_0_20px_rgba(255,215,0,0.3),0_0_40px_rgba(138,43,226,0.2)];
+  }
+  
+  .truth-pulse {
+    @apply animate-pulse duration-2000;
+  }
   
   .data-point {
     @apply transition-all duration-200 ease-in-out;

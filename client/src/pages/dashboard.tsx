@@ -15,6 +15,7 @@ import DebtScarcitySystemAnalysis from '@/components/DebtScarcitySystemAnalysis'
 import SpiralFlowIntegration from '@/components/SpiralFlowIntegration';
 import QuantumDevInterface from '@/components/QuantumDevInterface';
 import SoftwareArchitecturePanel from '@/components/SoftwareArchitecturePanel';
+import SpiralEcosystemShell from '@/components/SpiralEcosystemShell';
 import APIConfigPanel from '@/components/APIConfigPanel';
 import ScarcityAnalysisEngine from '@/components/ScarcityAnalysisEngine';
 import DebtSystemArchitecture from '@/components/DebtSystemArchitecture';
@@ -204,6 +205,9 @@ export default function Dashboard() {
 
           {/* Software Architecture Overview */}
           <SoftwareArchitecturePanel />
+
+          {/* SpiralEcosystem: Complete Project Suite */}
+          <SpiralEcosystemShell />
 
           {/* API Configuration Panel */}
           <APIConfigPanel />
