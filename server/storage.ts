@@ -124,7 +124,7 @@ export class MemStorage implements IStorage {
         gdpRatio: null,
         lastUpdated: new Date(),
         source: data.source,
-        metadata: null
+        metadata: {}
       });
     });
 
@@ -205,9 +205,17 @@ export class MemStorage implements IStorage {
   async createDebtData(insertData: InsertDebtData): Promise<DebtData> {
     const id = this.currentId++;
     const data: DebtData = { 
-      ...insertData, 
       id,
-      lastUpdated: new Date()
+      country: insertData.country,
+      debtType: insertData.debtType,
+      amount: insertData.amount,
+      currency: insertData.currency || "USD",
+      year: insertData.year,
+      quarter: insertData.quarter || null,
+      gdpRatio: insertData.gdpRatio || null,
+      lastUpdated: new Date(),
+      source: insertData.source,
+      metadata: insertData.metadata || {}
     };
     this.debtDataRecords.set(id, data);
     return data;
@@ -237,9 +245,14 @@ export class MemStorage implements IStorage {
   async createEconomicIndicator(insertData: InsertEconomicIndicator): Promise<EconomicIndicator> {
     const id = this.currentId++;
     const data: EconomicIndicator = { 
-      ...insertData, 
       id,
-      lastUpdated: new Date()
+      country: insertData.country,
+      indicator: insertData.indicator,
+      value: insertData.value,
+      year: insertData.year,
+      quarter: insertData.quarter ?? null,
+      lastUpdated: new Date(),
+      source: insertData.source
     };
     this.economicIndicatorRecords.set(id, data);
     return data;
@@ -256,8 +269,13 @@ export class MemStorage implements IStorage {
   async createDebtOwnership(insertData: InsertDebtOwnership): Promise<DebtOwnership> {
     const id = this.currentId++;
     const data: DebtOwnership = { 
-      ...insertData, 
       id,
+      debtorCountry: insertData.debtorCountry,
+      creditorCountry: insertData.creditorCountry ?? null,
+      creditorType: insertData.creditorType,
+      amount: insertData.amount,
+      percentage: insertData.percentage ?? null,
+      year: insertData.year,
       lastUpdated: new Date()
     };
     this.debtOwnershipRecords.set(id, data);

@@ -6,12 +6,7 @@ interface SidebarProps {
 }
 
 const navigationItems = [
-  { path: "/", label: "Overview", icon: "chart-line" },
-  { path: "/global", label: "Global Analysis", icon: "globe" },
-  { path: "/networks", label: "Debt Networks", icon: "network-wired" },
-  { path: "/scenarios", label: "Scenarios", icon: "calculator" },
-  { path: "/ownership", label: "Ownership", icon: "chart-pie" },
-  { path: "/api", label: "API Config", icon: "cogs" }
+  { path: "/", label: "Overview", icon: "chart-line" }
 ];
 
 export default function Sidebar({ className = "" }: SidebarProps) {
@@ -30,14 +25,14 @@ export default function Sidebar({ className = "" }: SidebarProps) {
       <nav className="flex-1 p-4 space-y-2">
         {navigationItems.map((item) => (
           <Link key={item.path} href={item.path}>
-            <a className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
+            <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors cursor-pointer ${
               location === item.path 
                 ? "bg-blue-600 text-white" 
                 : "hover:bg-slate-800 text-slate-300"
             }`}>
               <i className={`fas fa-${item.icon}`}></i>
               <span>{item.label}</span>
-            </a>
+            </div>
           </Link>
         ))}
       </nav>
