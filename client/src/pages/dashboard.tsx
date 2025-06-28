@@ -9,6 +9,9 @@ import RealTimeTracker from '@/components/RealTimeTracker';
 import ScenarioSimulator from '@/components/ScenarioSimulator';
 import OwnershipAnalysis from '@/components/OwnershipAnalysis';
 import APIConfigPanel from '@/components/APIConfigPanel';
+import ScarcityAnalysisEngine from '@/components/ScarcityAnalysisEngine';
+import DebtSystemArchitecture from '@/components/DebtSystemArchitecture';
+import WealthFlowAnalyzer from '@/components/WealthFlowAnalyzer';
 
 export default function Dashboard() {
   const { data: debtData = [], isLoading } = useQuery<DebtData[]>({
@@ -59,8 +62,8 @@ export default function Dashboard() {
         <header className="bg-slate-900 border-b border-slate-800 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-white">Global Debt Overview</h2>
-              <p className="text-slate-400 mt-1">Real-time analysis of $315 trillion global debt</p>
+              <h2 className="text-3xl font-bold text-white">Global Debt Analytics</h2>
+              <p className="text-slate-400 mt-1">Analyzing $315T debt as a scarcity-generation mechanism</p>
             </div>
             <div className="flex items-center space-x-4">
               <button 
@@ -159,11 +162,20 @@ export default function Dashboard() {
             </div>
           </div>
 
+          {/* Advanced Scarcity Analysis */}
+          <ScarcityAnalysisEngine />
+          
+          {/* System Architecture Analysis */}
+          <DebtSystemArchitecture />
+
           {/* Advanced Analysis Tools */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ScenarioSimulator />
             <OwnershipAnalysis />
           </div>
+
+          {/* Wealth Flow Analysis */}
+          <WealthFlowAnalyzer />
 
           {/* API Configuration Panel */}
           <APIConfigPanel />

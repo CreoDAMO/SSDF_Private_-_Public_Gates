@@ -100,6 +100,11 @@ The application is structured for easy deployment on platforms like Replit, with
 ```
 Changelog:
 - June 28, 2025. Initial setup
+- June 28, 2025. Enhanced with advanced scarcity analysis components based on debt as scarcity-generation mechanism insights
+  - Added ScarcityAnalysisEngine: Analyzes access restriction, wealth concentration, poverty amplification
+  - Added DebtSystemArchitecture: Visualizes how debt creates scarcity through systematic mechanisms
+  - Added WealthFlowAnalyzer: Tracks $17.5T annual wealth extraction through debt servicing
+  - Updated dashboard to reflect debt as control mechanism rather than just financial metric
 ```
 
 ## User Preferences

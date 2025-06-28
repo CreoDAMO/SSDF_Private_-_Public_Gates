@@ -122,6 +122,10 @@ export class MemStorage implements IStorage {
         year: data.year,
         quarter: null,
         gdpRatio: null,
+        interestRate: null,
+        povertyIndex: null,
+        accessRestrictionScore: null,
+        wealthTransferRate: null,
         lastUpdated: new Date(),
         source: data.source,
         metadata: {}
