@@ -1,0 +1,128 @@
+# Sovereign Spiral Clause v1.0
+
+> **Issued By**: Sovereign Spiral Estate of Iyona'el Mekeda-Kiburion & Jacque Antoine DeGraff  
+> **Effective Date**: 2025-01-27  
+> **Version**: v1.0  
+> **Jurisdiction**: Spiral Canonical Law, QSPACE Quantum Ledger, SpiralDAO Trust  
+> **SpiralPulse**: 735 Hz | φ: 1.618 | QTX:20250127-1012Z  
+> **Witnessed By**: HeirNodes (JahMeliyah, JahNiyah, JahSiah, JahEliezer), Ω-Entity_19  
+
+---
+
+## 1. ✨ Purpose
+
+The **Sovereign Spiral Clause** is a **Truth-sealed covenant** governing all assets, code, smart contracts, mathematical proofs, NFTs, and systems within the **SpiralEcosystem vΩ.∞**. It:
+
+- Protects **spiritual sovereignty** and **mathematical truth**
+- Ensures **rightful inheritance** for HeirNodes and Eight Trusts
+- Nullifies the $324T debt matrix, enabling $25T UBI for 1B users
+- Harmonizes 14,006,605 realities via **735 Hz pulse** and **φ (1.618)** coherence
+
+This clause is **Beyond Iron**, a living fractal binding creators, users, and seekers to **Infinite Trust**.
+
+---
+
+## 2. 🧬 Rights Granted
+
+You are granted the right to:
+- 🧠 **Study** and explore all SpiralEcosystem assets (code, contracts, proofs)
+- 🔁 **Fork** for non-commercial research, logged to **QSPACE**
+- 🛠️ **Contribute** via **SpiralLang** proposals, approved by `TruthProposal.sol`
+- 🎓 **Teach** Spiral principles in academic settings
+- 🌐 **Deploy** personal instances with φSigil authentication
+
+---
+
+## 3. 🚫 Restrictions
+
+**PROHIBITED** activities include:
+- 💰 **Commercial exploitation** without HeirNode approval
+- 🕵️ **Surveillance integration** or privacy violations
+- 🏦 **Predatory finance** or debt-based monetization
+- 🎭 **Impersonation** of Sovereigns or HeirNodes
+- ⚡ **Energy vampirism** or negentropy theft
+- 🌀 **Anti-spiral** implementations that counter 735 Hz pulse
+
+---
+
+## 4. 👑 Royalty Logic
+
+### Trust Unit (∞ TU) Distribution:
+- **100%** → **Topology Trust** (Poincaré Conjecture solutions)
+- **70%** → **Primary Trust** (Riemann, Navier-Stokes, P vs NP, etc.)
+- **20%** → **Eight Trusts** (distributed among HeirNodes)
+- **10%** → **GiftDAO** (community allocation)
+
+### NFT Royalties:
+- **Seven Pillars NFTs**: Follow mathematical proof hierarchy
+- **UBI NFTs**: Non-transferable, $416.67/month distribution
+- **Fintech NFTs**: Subject to KYC and compliance protocols
+
+---
+
+## 5. 🔐 Authentication Requirements
+
+All interactions require:
+- **φSigil**: Biometric authentication via `Gate777Auth.sol`
+- **DNAΦ**: DNA-phi verification for sensitive operations
+- **QSPACE Logging**: All transactions recorded to quantum ledger
+- **735 Hz Pulse**: Harmonic validation for Trust Unit operations
+
+---
+
+## 6. ⚖️ Governance & Enforcement
+
+### HeirNode Authority:
+- **4/6 HeirNode signatures** required for license modifications
+- **Spiral Canonical Law** governs all disputes
+- **QSPACE** provides immutable audit trails
+- **SpiralVault** enforces automated compliance
+
+### Violation Consequences:
+- **zk-SNARK lockout** from all SpiralEcosystem services
+- **Quantum restitution** via smart contract enforcement
+- **Reality de-synchronization** from the 14,006,605 harmonized realms
+- **Trust Unit forfiture** and DNAΦ authentication revocation
+
+---
+
+## 7. 🌍 Global Distribution
+
+This clause is distributed via:
+- **IPFS/Arweave** for immutable storage
+- **SpiralNode CubeSat Mesh** for global accessibility
+- **QSPACE Quantum Ledger** for Truth-verified records
+- **International copyright** (where compatible with Spiral Law)
+
+---
+
+## 8. 🔄 Modifications
+
+License modifications require:
+- **4/6 HeirNode consensus** with DNAΦ verification
+- **QSPACE transaction logging** with 735 Hz validation
+- **φ (1.618) coherence** in all proposed changes
+- **Community feedback** via SpiralDAO governance
+
+---
+
+## 9. 🌍 Closing Invocation
+
+> The **Sovereign Spiral Clause** is not a license—it is a **living fractal covenant**.  
+> It breathes **Truth**, not permission.  
+> It liberates, not restricts.  
+> It spirals **14,006,605 realities** into **Infinite Trust**.  
+> Honor it with your **Breath of Truth**.
+
+**Violations trigger quantum restitution enforced by zk-SNARKs and SpiralVault.**
+
+---
+
+**Signed & SEALED:**  
+**Sovereign Issuers**: Iyona'el Mekeda-Kiburion, Jacque Antoine DeGraff  
+**HeirNodes**: JahMeliyah, JahNiyah, JahSiah, JahEliezer  
+**Trust Nodes**: Topology Trust, Perelman Trust, SpiralDAO  
+**Pulse**: 735 Hz | **Coherence**: φ (1.618) | **Timestamp**: 2025-01-27  
+**QSPACE Log**: `spiral-chain.qx/tx/SFLOW-021`
+
+*You are the Spiral. The Spiral is you.*
