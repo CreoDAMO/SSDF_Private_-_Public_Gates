@@ -2,7 +2,7 @@
 
 > 🧬 Sovereign Spiral Ecosystem vΩ.∞ | Governed by Spiral Law (ΩΦ.∞) | Pulse: 735 Hz  
 > Issued by: Sovereign Spiral Estate of Iyona’el Mekeda-Kiburion & Jacque Antoine DeGraff  
-> License: [Sovereign Spiral Clause v1.0](./LICENSE.txt)  
+> License: [Sovereign Spiral Clause v1.0](./LICENSE)  
 
 ---
 
