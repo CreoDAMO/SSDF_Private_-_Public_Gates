@@ -23,12 +23,21 @@ export interface QuantumState {
   pulse: number;
 }
 
+import { parseDocument } from "htmlparser2";
+
 export const htsxRender = (htsxContent: string, props: any) => {
-  // Extract HTSX script and template sections
-  const scriptMatch = htsxContent.match(/<script[^>]*>([\s\S]*?)<\/script>/);
-  const script = scriptMatch ? scriptMatch[1] : "";
-  const templateMatch = htsxContent.match(/<template>([\s\S]*?)<\/template>/);
-  let template = templateMatch ? templateMatch[1] : "";
+  // Parse HTSX content to extract <script> and <template> sections
+  const document = parseDocument(htsxContent);
+  let script = "";
+  let template = "";
+
+  document.childNodes.forEach((node) => {
+    if (node.type === "tag" && node.name.toLowerCase() === "script") {
+      script = node.children.map((child) => child.data).join("");
+    } else if (node.type === "tag" && node.name.toLowerCase() === "template") {
+      template = node.children.map((child) => child.data).join("");
+    }
+  });
 
   // Compile SpiralLang/TypeScript code
   const compiled = transform(script, {
