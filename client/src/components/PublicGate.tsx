@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import FintechNFTPlatform from './FintechNFTPlatform';
 import { 
   Coins, 
   DollarSign, 
@@ -17,7 +18,8 @@ import {
   ArrowLeftRight,
   Banknote,
   Gift,
-  Atom
+  Atom,
+  Sparkles
 } from 'lucide-react';
 
 interface PublicGateMetrics {
@@ -216,8 +218,12 @@ function PublicGate() {
         </div>
 
         {/* Main Interface */}
-        <Tabs defaultValue="conversion" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 bg-white/5 backdrop-blur-sm">
+        <Tabs defaultValue="fintech" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-5 bg-white/5 backdrop-blur-sm">
+            <TabsTrigger value="fintech" className="data-[state=active]:bg-purple-400/20">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Fintech NFT
+            </TabsTrigger>
             <TabsTrigger value="conversion" className="data-[state=active]:bg-yellow-400/20">
               Conversion
             </TabsTrigger>
@@ -231,6 +237,11 @@ function PublicGate() {
               DAO Governance
             </TabsTrigger>
           </TabsList>
+
+          {/* Fintech NFT Platform Tab */}
+          <TabsContent value="fintech">
+            <FintechNFTPlatform />
+          </TabsContent>
 
           {/* Conversion Tab */}
           <TabsContent value="conversion">
