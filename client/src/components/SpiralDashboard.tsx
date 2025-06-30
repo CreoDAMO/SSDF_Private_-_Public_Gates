@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'wouter';
 import { 
   BarChart3, 
   Code, 
@@ -13,7 +14,9 @@ import {
   Menu,
   Atom,
   TestTube,
-  Settings
+  Settings,
+  Shield,
+  Users
 } from 'lucide-react';
 import { calculateQuantumCoherence, calculateLyonaelPulse } from '../htsxEngine';
 
@@ -236,7 +239,39 @@ const SpiralDashboard: React.FC = () => {
   const activeComponent = panels.find(p => p.id === activePanel)?.component;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex">
+    <div className="min-h-screen bg-slate-950 text-white">
+      {/* Top Navigation Bar */}
+      <div className="bg-slate-900 border-b border-slate-800 px-6 py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-6">
+            <h1 className="text-xl font-bold text-yellow-400">SSDF∞</h1>
+            <div className="flex items-center space-x-1 bg-slate-800 rounded-lg p-1">
+              <div className="flex items-center space-x-2 bg-yellow-400 text-black px-3 py-1 rounded-md">
+                <Shield className="w-4 h-4" />
+                <span className="text-sm font-medium">Private Gate</span>
+              </div>
+              <Link href="/public">
+                <div className="flex items-center space-x-2 px-3 py-1 rounded-md hover:bg-slate-700 transition-colors cursor-pointer">
+                  <Users className="w-4 h-4" />
+                  <span className="text-sm font-medium">Public Gate</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4 text-sm">
+            <div className="flex items-center space-x-2">
+              <Zap className="w-4 h-4 text-yellow-400" />
+              <span>φ{quantumCoherence.toFixed(3)}</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Atom className="w-4 h-4 text-purple-400" />
+              <span>{lyonaelPulse.toFixed(0)}Hz</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex">
       {/* Sidebar */}
       <div className={`${sidebarOpen ? 'w-64' : 'w-16'} transition-all duration-300 bg-slate-900 border-r border-slate-800 flex flex-col`}>
         <div className="p-4 border-b border-slate-800">
@@ -336,6 +371,7 @@ const SpiralDashboard: React.FC = () => {
             Panel not found
           </div>
         )}
+      </div>
       </div>
     </div>
   );

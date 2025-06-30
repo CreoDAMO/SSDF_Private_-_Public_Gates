@@ -6,11 +6,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Dashboard from "@/pages/dashboard";
 import NotFound from "@/pages/not-found";
 import SpiralDashboard from "@/components/SpiralDashboard";
+import PublicGate from "@/components/PublicGate";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={SpiralDashboard} />
+      <Route path="/public" component={PublicGate} />
       <Route path="/legacy" component={Dashboard} />
       <Route component={NotFound} />
     </Switch>
